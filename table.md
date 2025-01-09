@@ -152,10 +152,4 @@ erDiagram
         string category
         string description
     }
-    SNS_MST {
-        string snsID PK
-        string snsName
-        image_pass image
-        string link
-    }
 ```
