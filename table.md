@@ -78,7 +78,7 @@ erDiagram
         string description
         image_pass image
         int requiredRewards
-        string validStoreID FK
+        list validStoreID FK
         datetime createDate
         int validDays
         datetime validSince
