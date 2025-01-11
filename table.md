@@ -1,10 +1,10 @@
 ```mermaid
 erDiagram
     STORE_MST ||--o{ USER_MST : has
-    USER_MST ||--o{ STAMP_GET_HISTORY : has
-    STORE_MST ||--o{ STAMP_GET_HISTORY : has
-    USER_MST ||--o{ STAMP_USE_HISTORY : has
-    COUPON_MST ||--o{ STAMP_USE_HISTORY : has
+    USER_MST ||--o{ REWARD_GET_HISTORY : has
+    STORE_MST ||--o{ REWARD_GET_HISTORY : has
+    USER_MST ||--o{ REWARD_USE_HISTORY : has
+    COUPON_MST ||--o{ REWARD_USE_HISTORY : has
     STORE_MST ||--o{ COUPON_MST : has
     USER_MST ||--o{ COUPON_GET_HISTORY : has
     COUPON_MST ||--o{ COUPON_GET_HISTORY : has
@@ -18,6 +18,8 @@ erDiagram
     STORE_MST ||--o{ INFORMATION_MST : has
     USER_MST ||--o{ INFORMATION_CHECK_HISTORY : has
     INFORMATION_MST ||--o{ INFORMATION_CHECK_HISTORY : has
+    USER_MST ||--o{ REVIEW_DONE_HISTORY : has
+    REVIEW_SITE_MST ||--o{ REVIEW_DONE_HISTORY : has
     USER_MST ||--o{ EXTERNAL_SITE_BANNER_CLICK_HISTORY : has
     EXTERNAL_SITE_BANNER_MST ||--o{ EXTERNAL_SITE_BANNER_CLICK_HISTORY : has
 
@@ -29,23 +31,20 @@ erDiagram
         string ageGroup
         string gender
         string occupation
+        int birthMonth
         datetime registrationDate
         string storeID FK
         boolean isWithdrawn
         datetime lastLoginDate
         int monthlyVisits
         int totalVisits
-        int currentStamps
-        int totalStamps
-        datetime lastStampUseDate
+        int currentRewards
+        int totalRewards
+        datetime lastRewardUseDate
         int lotteryUseCount
         datetime lastLotteryUseDate
         int couponUseCount
         datetime lastCouponUseDate
-        boolean googleReviewFlag
-        datetime googleReviewDate
-        boolean snsReviewFlag
-        datetime snsReviewDate
     }
     STORE_MST {
         string storeID PK
@@ -59,17 +58,17 @@ erDiagram
         datetime openingDate
         datetime closingDate
     }
-    STAMP_GET_HISTORY {
+    REWARD_GET_HISTORY {
         string historyID PK
         string userID FK
         string storeID FK
-        int stampCount
+        int rewardCount
         datetime acquisitionDate
     }
-    STAMP_USE_HISTORY {
+    REWARD_USE_HISTORY {
         string historyID PK
         string userID FK
-        int usedStamps
+        int usedRewards
         string couponID FK
         datetime useDate
     }
@@ -77,7 +76,7 @@ erDiagram
         string couponID PK
         string couponName
         string description
-        int requiredStamps
+        int requiredRewards
         string validStoreID FK
         datetime introductionDate
         int validityDays
@@ -132,6 +131,17 @@ erDiagram
         string userID FK
         string informationID FK
         datetime checkDate
+    }
+    REVIEW_SITE_MST {
+        string reviewSiteID PK
+        string reviewSiteName
+        string link
+    }
+    REVIEW_DONE_HISTORY {
+        string historyID PK
+        string userID FK
+        string reviewSiteID FK
+        datetime reviewDoneDate
     }
     EXTERNAL_SITE_BANNER_MST {
         string bannerID PK
