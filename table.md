@@ -129,6 +129,7 @@ erDiagram
         image_pass image
         string link
         string targetStoreID FK
+        datetime createDate
         datetime validSince
         datetime validUntil
     }
