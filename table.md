@@ -76,10 +76,12 @@ erDiagram
         string couponID PK
         string couponName
         string description
+        image_pass image
         int requiredRewards
         string validStoreID FK
         datetime introductionDate
-        int validityDays
+        datetime validSince
+        datetime validUntil
     }
     COUPON_GET_HISTORY {
         string historyID PK
@@ -110,6 +112,7 @@ erDiagram
         string notificationID PK
         string content
         string type
+        datetime publishDate
     }
     PUSH_NOTIFICATION_CLICK_HISTORY {
         string historyID PK
@@ -124,7 +127,8 @@ erDiagram
         image_pass image
         string link
         string targetStoreID FK
-        datetime publishDate
+        datetime validSince
+        datetime validUntil
     }
     INFORMATION_CHECK_HISTORY {
         string historyID PK
