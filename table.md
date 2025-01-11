@@ -79,7 +79,7 @@ erDiagram
         image_pass image
         int requiredRewards
         string validStoreID FK
-        datetime introductionDate
+        datetime createDate
         int validDays
         datetime validSince
         datetime validUntil
@@ -113,6 +113,7 @@ erDiagram
         string notificationID PK
         string content
         string type
+        datetime createDate
         datetime publishDate
     }
     PUSH_NOTIFICATION_CLICK_HISTORY {
