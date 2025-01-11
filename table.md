@@ -80,6 +80,7 @@ erDiagram
         int requiredRewards
         string validStoreID FK
         datetime introductionDate
+        int validDays
         datetime validSince
         datetime validUntil
     }
