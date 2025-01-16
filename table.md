@@ -12,7 +12,7 @@ erDiagram
     COUPON_MST ||--o{ COUPON_USE_HISTORY : has
     STORE_MST ||--o{ COUPON_USE_HISTORY : has
     USER_MST ||--o{ LOTTERY_USE_HISTORY : has
-    LOTTERY_MST ||--o{ LOTTERY_USE_HISTORY : has
+    COUPON_MST ||--o{ LOTTERY_USE_HISTORY : has
     USER_MST ||--o{ PUSH_NOTIFICATION_CLICK_HISTORY : has
     PUSH_NOTIFICATION_MST ||--o{ PUSH_NOTIFICATION_CLICK_HISTORY : has
     STORE_MST ||--o{ INFORMATION_MST : has
@@ -79,10 +79,12 @@ erDiagram
         image_pass image
         int requiredRewards
         string_list validStoreID FK
+        string couponCategory
         datetime createDate
         int validDays
         datetime validSince
         datetime validUntil
+        list usedUsers
     }
     COUPON_GET_HISTORY {
         string historyID PK
@@ -97,16 +99,10 @@ erDiagram
         string storeID FK
         datetime useDate
     }
-    LOTTERY_MST {
-        string lotteryID PK
-        string name
-        string description
-        datetime introductionDate
-    }
     LOTTERY_USE_HISTORY {
         string historyID PK
         string userID FK
-        string lotteryID FK
+        string couponID FK
         datetime useDate
     }
     PUSH_NOTIFICATION_MST {
@@ -115,6 +111,7 @@ erDiagram
         string type
         datetime createDate
         datetime publishDate
+        list clickedUsers
     }
     PUSH_NOTIFICATION_CLICK_HISTORY {
         string historyID PK
@@ -132,6 +129,7 @@ erDiagram
         datetime createDate
         datetime validSince
         datetime validUntil
+        list checkedUsers
     }
     INFORMATION_CHECK_HISTORY {
         string historyID PK
@@ -143,6 +141,7 @@ erDiagram
         string reviewSiteID PK
         string reviewSiteName
         string link
+        list reviewedUsers
     }
     REVIEW_DONE_HISTORY {
         string historyID PK
@@ -154,6 +153,7 @@ erDiagram
         string bannerID PK
         string title
         string link
+        list clickedUsers
     }
     EXTERNAL_SITE_BANNER_CLICK_HISTORY {
         string historyID PK
