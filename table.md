@@ -84,7 +84,7 @@ erDiagram
         int validDays
         datetime validSince
         datetime validUntil
-        list usedUsers
+        list usedByUsers
     }
     COUPON_GET_HISTORY {
         string historyID PK
@@ -111,7 +111,7 @@ erDiagram
         string type
         datetime createDate
         datetime publishDate
-        list clickedUsers
+        list clickedByUsers
     }
     PUSH_NOTIFICATION_CLICK_HISTORY {
         string historyID PK
@@ -129,7 +129,7 @@ erDiagram
         datetime createDate
         datetime validSince
         datetime validUntil
-        list checkedUsers
+        list checkedByUsers
     }
     INFORMATION_CHECK_HISTORY {
         string historyID PK
@@ -141,7 +141,7 @@ erDiagram
         string reviewSiteID PK
         string reviewSiteName
         string link
-        list reviewedUsers
+        list reviewedByUsers
     }
     REVIEW_DONE_HISTORY {
         string historyID PK
@@ -153,7 +153,7 @@ erDiagram
         string bannerID PK
         string title
         string link
-        list clickedUsers
+        list clickedByUsers
     }
     EXTERNAL_SITE_BANNER_CLICK_HISTORY {
         string historyID PK
