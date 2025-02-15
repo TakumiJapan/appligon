@@ -26,16 +26,19 @@ erDiagram
     USER_MST {
         string userID PK
         string username
-        string fullName
+        string password
         string email
-        string ageGroup
+        string phone
         string gender
         string occupation
-        int birthMonth
+        datetime birthday
         datetime registrationDate
         string storeID FK
         boolean isWithdrawn
+        boolean isAdmin
+        boolean profileCompleted
         datetime lastLoginDate
+        image_pass profilePicture
         int monthlyVisits
         int totalVisits
         int currentRewards
@@ -43,8 +46,10 @@ erDiagram
         datetime lastRewardUseDate
         int lotteryUseCount
         datetime lastLotteryUseDate
+        datetime nextLotteryUseDate
         int couponUseCount
         datetime lastCouponUseDate
+        string deviceToken
     }
     STORE_MST {
         string storeID PK
@@ -57,6 +62,7 @@ erDiagram
         int parkingSpaces
         datetime openingDate
         datetime closingDate
+        image_pass image 
     }
     REWARD_GET_HISTORY {
         string historyID PK
@@ -79,7 +85,7 @@ erDiagram
         image_pass image
         int requiredRewards
         string_list validStoreID FK
-        string couponCategory
+        string couponCategory 
         datetime createDate
         int validDays
         datetime validSince
@@ -108,7 +114,6 @@ erDiagram
     PUSH_NOTIFICATION_MST {
         string notificationID PK
         string content
-        string type
         datetime createDate
         datetime publishDate
         list clickedByUsers
@@ -125,11 +130,12 @@ erDiagram
         string details
         image_pass image
         string link
-        string targetStoreID FK
+        string validStoreID FK
         datetime createDate
         datetime validSince
         datetime validUntil
         list checkedByUsers
+        boolean isShownOnHomeScreen
     }
     INFORMATION_CHECK_HISTORY {
         string historyID PK
